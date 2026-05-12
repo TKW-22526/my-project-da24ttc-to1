@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm</title>
+    <!-- Nhúng Bootstrap 5 CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/lib.js"></script>
+</head>
+<body class="bg-light">
+
+    <div class="container my-5" style="max-width: 900px;">
+        
+        <!-- Nút quay lại -->
+        <div class="mb-4">
+            <a href="page6.html" class="btn btn-outline-secondary btn-sm">← Quay lại danh sách</a>
+        </div>
+
+        <!-- Khung chứa nội dung chi tiết sản phẩm -->
+        <div class="card shadow-sm p-4 bg-white">
+            <div class="row g-4 align-items-start">
+                
+                <!-- Cột bên trái: Ảnh sản phẩm (Chiếm 5/12 cột trên màn hình lớn) -->
+                <div class="col-md-5">
+                    <img id = "p-image" src="DU_LIEU_ANH_CUA_BAN_TAI_DAY" alt="Tên sản phẩm" class="img-fluid rounded w-100 object-fit-cover" style="max-height: 400px;">
+                </div>
+                
+                <!-- Cột bên phải: Thông tin sản phẩm (Chiếm 7/12 cột trên màn hình lớn) -->
+                <div class="col-md-7">
+                    <!-- Tên sản phẩm -->
+                    <h1 id = "p-name" class="h2 fw-bold text-dark mb-3">TÊN SẢN PHẨM CỦA BẠN</h1>
+                    
+                    <!-- Giá sản phẩm -->
+                    <h2 id = "p-price" class="h4 text-danger fw-semibold mb-4">GIÁ SẢN PHẨM VNĐ</h2>
+                    
+                    <hr>
+                    
+                    <h3 class="h6 fw-bold text-secondary text-uppercase mb-2">Mô tả sản phẩm</h3>
+                    
+                    <!-- Mô tả sản phẩm: canh đều (text-justify), giãn dòng 1.5 (lh-base) -->
+                    <p id = "p-description"  class="text-muted lh-base" style="text-align: justify;">
+                        NỘI DUNG MÔ TẢ CỦA BẠN TỪ 150 ĐẾN 200 TỪ SẼ ĐƯỢC CHÈN VÀO ĐÂY. 
+                        Đoạn văn này sử dụng class lh-base của Bootstrap 5 để tự động giãn dòng 1.5 line 
+                        và thuộc tính text-align: justify của CSS để căn đều cả hai lề trái phải, 
+                        giúp bố cục văn bản trông gọn gàng, chuyên nghiệp và dễ đọc hơn trên mọi thiết bị.
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+    <script>
+        // 1. Lấy ID từ URL bằng URLSearchParams
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id'); // Kết quả là kiểu String (Ví dụ: "3")
+
+        // 2. Dùng find để tìm đối tượng. Cần ép kiểu productId về Number bằng Number() hoặc dấu +
+        const product = productList.find(function(p) {
+            return p.id === productId;
+        });
+
+        // 3. Truy xuất các trường dữ liệu khi đối tượng tồn tại
+        if (product) {
+            document.getElementById("p-image").src = product.image;
+            document.getElementById("p-name").innerHTML = product.name;
+            document.getElementById("p-price").innerHTML = "Giá bán lẻ: " + (product.price).toLocaleString() + " VNĐ";
+            document.getElementById("p-description").innerHTML = product.desc;
+        }
+       
+
+    </script>
+</body>
+</html>
